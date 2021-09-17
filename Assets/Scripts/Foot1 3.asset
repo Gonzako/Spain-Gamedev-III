@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d64ad823a257142b2b6b733d2237ca, type: 3}
   m_Name: Foot1 3
   m_EditorClassIdentifier: 
-  Sound: {fileID: 0}
+  Sound: {fileID: 8300000, guid: 56b092f334eee44499264859a54041b6, type: 3}
   VolumeMax: 1
   VolumeMin: 0.8
   PitchMax: 1.2
