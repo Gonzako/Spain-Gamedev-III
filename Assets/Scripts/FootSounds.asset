@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1c04620f7fc934fa25d7b1b3df788e, type: 3}
+  m_Name: FootSounds
+  m_EditorClassIdentifier: 
+  Sounds:
+  - {fileID: 11400000, guid: 6ca49b17bd22045418ad3c5baad81c9b, type: 2}
+  - {fileID: 11400000, guid: b37d4c8358d4489478d705475425c50e, type: 2}
+  - {fileID: 11400000, guid: d83b6eba05ca75444aa0df2eab3675be, type: 2}
+  - {fileID: 11400000, guid: 9dcd9612b94c0d24e8490415e864874c, type: 2}
