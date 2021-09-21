@@ -16,4 +16,4 @@ MonoBehaviour:
   VolumeMax: 1
   VolumeMin: 0.8
   PitchMax: 1.2
-  PitchMin: 0.8
+  PitchMin: -2.08
