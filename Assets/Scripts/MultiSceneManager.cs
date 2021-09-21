@@ -23,6 +23,7 @@ public class MultiSceneManager : MonoBehaviour
     #region PrivateFields
 
     private const string UIName = "UIScene";
+    private const string MusicName = "Music";
     #endregion
 
     #region UnityCallBacks
@@ -34,10 +35,9 @@ public class MultiSceneManager : MonoBehaviour
 
     void Start()
     {
-        if (SceneManager.GetSceneByName(UIName).isLoaded == false)
-        {
-            SceneManager.LoadSceneAsync(UIName, LoadSceneMode.Additive);
-        }
+
+        ActivateMusic();
+        ActivateUI();
     }
 
     void FixedUpdate()
@@ -60,6 +60,22 @@ public class MultiSceneManager : MonoBehaviour
     #endregion
 
     #region PublicMethods
+    public void ActivateMusic()
+    {
+        
+        if (SceneManager.GetSceneByName(UIName).isLoaded == false)
+        {
+            SceneManager.LoadSceneAsync(UIName, LoadSceneMode.Additive);
+        }
+    }
+
+    public void ActivateUI()
+    {
+        if (SceneManager.GetSceneByName(MusicName).isLoaded == false)
+        {
+            SceneManager.LoadSceneAsync(MusicName, LoadSceneMode.Additive);
+        }
+    }
 
     #endregion
 

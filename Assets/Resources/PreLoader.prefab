@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3197237041436474607}
   - component: {fileID: 6997232102586764583}
+  - component: {fileID: 6340022317328335924}
   m_Layer: 0
   m_Name: PreLoader
   m_TagString: Untagged
@@ -41,5 +42,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42420fd59ad045043a8ec2eb2134330f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6340022317328335924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3197237041436474640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d86bf82e2630db488829b7a88c29872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
