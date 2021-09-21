@@ -29,4 +29,17 @@ public class SoundPacket : ScriptableObject
         target.Play();
     }
 
+
+    private void OnValidate()
+    {
+        if(PitchMin > PitchMax)
+        {
+            PitchMin = PitchMax;
+        }
+        if(VolumeMin > VolumeMax)
+        {
+            VolumeMin = VolumeMax;
+        }
+
+    }
 }
