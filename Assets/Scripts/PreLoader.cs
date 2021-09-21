@@ -13,7 +13,7 @@ using UnityEngine;
 /// <summary> Monobeavior class that does something </summary>
 
 
-public class alskjdflasj : MonoBehaviour
+public class PreLoader : MonoBehaviour
 {
 
     #region PublicFields
@@ -51,7 +51,12 @@ public class alskjdflasj : MonoBehaviour
     #endregion
 
     #region PublicMethods
-
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    public static void LoadServices()
+    {
+        GameObject main = GameObject.Instantiate(Resources.Load("Main")) as GameObject;
+        GameObject.DontDestroyOnLoad(main);
+    }
     #endregion
 
 
