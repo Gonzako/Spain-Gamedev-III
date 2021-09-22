@@ -67,6 +67,11 @@ public class SquareGrid
         }*/
     }
 
+    public void SetID(UnityEngine.Vector2Int position, int newID)
+    {
+        internalMatrix[position.x, position.y] = newID;
+    }
+
     public Vector2Int GetPlayerPosition()
     {
         for(int x = 0; x < internalMatrix.GetLength(0); x++)

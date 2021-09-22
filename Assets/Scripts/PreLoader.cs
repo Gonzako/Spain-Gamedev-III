@@ -51,7 +51,7 @@ public class PreLoader : MonoBehaviour
     #endregion
 
     #region PublicMethods
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    //[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void LoadServices()
     {
         GameObject main = GameObject.Instantiate(Resources.Load("PreLoader")) as GameObject;
