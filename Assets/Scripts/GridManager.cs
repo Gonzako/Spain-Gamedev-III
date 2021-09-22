@@ -37,7 +37,8 @@ public class SquareGrid
             0 Vacio
             1 Pared
             4 Player
-            7 Corazón
+            7 Corazón1 / Heart1
+            8 Corazón2 / Heart2
         */
 
         this.width = width;
@@ -48,7 +49,11 @@ public class SquareGrid
 
         internalMatrix[20,20] = 4; //poner al jugador
 
-        internalMatrix[25,25] = 1; //poniendo pared de ejemplo
+        internalMatrix[25,25] = 1; //poner pared
+        internalMatrix[26,25] = 1;
+        internalMatrix[23,25] = 1;
+
+        internalMatrix[25,21] = 7; //poner Corazón1 
 
 
 
@@ -75,8 +80,26 @@ public class SquareGrid
             }
         }
 
-        return new Vector2Int(-50,-50); // significa que Player no existe, no deberia ocurrir
+        return new Vector2Int(-50,-50); // significa que Player no existe, no deberia ocurrir nunca
     }
+
+    public Vector2Int GetHeart1Position()
+    {
+        for(int x = 0; x < internalMatrix.GetLength(0); x++)
+        {
+            for(int y = 0; y < internalMatrix.GetLength(1); y++)
+            {
+                if(internalMatrix[x,y] == 7)
+                {
+                    Debug.Log(x + " " + y);
+                    return new Vector2Int(x, y);
+                }
+            }
+        }
+
+        return new Vector2Int(-50,-50);
+    }
+
 
     public void MovePlayerPosition(int X_mov, int Y_mov)
     {
@@ -84,11 +107,24 @@ public class SquareGrid
         int x = vec.x;
         int y = vec.y;
 
-        if(internalMatrix[x + X_mov, y + Y_mov] != 1) //Pregunta por las Colisiones
+        if(internalMatrix[x + X_mov, y + Y_mov] != 1) // Pregunta por las Colisiones
         {
-            internalMatrix[x,y] = 0; // Deja vacio el lugar
-            internalMatrix[x + X_mov, y + Y_mov] = 4; // Posiciona nuevamente al jugador
-        }else{
+            if(internalMatrix[x + X_mov, y + Y_mov] == 7) // Choca con Corazón
+            {
+                if(internalMatrix[x + X_mov * 2, y + Y_mov * 2] != 1)
+                {
+                    internalMatrix[x + X_mov * 2, y + Y_mov * 2] = 7;
+                    internalMatrix[x + X_mov, y + Y_mov] = 4;   // Empuja Corazón en caso de ser posible
+                    internalMatrix[x,y] = 0;
+                }
+            }
+            else
+            {
+                internalMatrix[x,y] = 0; // Deja vacio el lugar
+                internalMatrix[x + X_mov, y + Y_mov] = 4; // Posiciona nuevamente al jugador
+            }
+        }
+        else{
             Debug.Log("Choque!");
         }
 
