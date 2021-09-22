@@ -8,8 +8,17 @@ public class CraftingDictionary : MonoBehaviour
     Dictionary<(ItemDescriptor, ItemDescriptor), (ItemDescriptor, ItemDescriptor)> dictionary = new Dictionary<(ItemDescriptor, ItemDescriptor), (ItemDescriptor, ItemDescriptor)>();
 
 
-    void AddCraftToDictionary(Craft SO)
+
+    void AddCraftsSO(Crafts SO) // SO = ScriptableObject
     {
-        dictionary.Add((SO.items[0], SO.items[1]) , (SO.items[2], SO.items[3]));
+        foreach(Recipe r in SO.recipes)
+        {
+            AddRecipeToDictionary(r.input_item1, r.input_item2, r.output_item1, r.output_item2);
+        }
+    }
+
+    void AddRecipeToDictionary(ItemDescriptor i1, ItemDescriptor i2, ItemDescriptor o1, ItemDescriptor o2)
+    {
+        dictionary.Add((i1, i2) , (o1, o2));
     }
 }
