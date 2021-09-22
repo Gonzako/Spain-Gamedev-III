@@ -12,7 +12,7 @@ using UnityEngine;
 
 public enum HexDirection
 {
-	NE, E, SE, SW, W, NW
+	NE, SE, S, SW, NW, N
 }
 
 
@@ -31,12 +31,12 @@ public static class HexDirectionExtensions
 
 	public static HexDirection Previous(this HexDirection direction)
 	{
-		return direction == HexDirection.NE ? HexDirection.NW : (direction - 1);
+		return direction == HexDirection.NE ? HexDirection.N : (direction - 1);
 	}
 
 	public static HexDirection Next(this HexDirection direction)
 	{
-		return direction == HexDirection.NW ? HexDirection.NE : (direction + 1);
+		return direction == HexDirection.N ? HexDirection.NE : (direction + 1);
 	}
 
 	public static Vector3Int ToCoordChange(this HexDirection dir)

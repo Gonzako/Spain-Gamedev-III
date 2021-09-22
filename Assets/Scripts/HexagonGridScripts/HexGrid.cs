@@ -24,10 +24,12 @@ public class HexGrid : MonoBehaviour
 
     #region PrivateFields
     [SerializeField] HexCell cellPrefab;
-    [SerializeField] Grid hexGrid = null;
     Dictionary<HexCoordinates, HexCell> cellDictionary = new Dictionary<HexCoordinates, HexCell>();
     [SerializeField] int gridSize = 3;
     [SerializeField] Transform parent;
+    [SerializeField, Range(0,2)] float sizeY = 1f;
+    [SerializeField, Range(0, 2)] float sizeX = 1f;
+    [SerializeField] bool allowWrap = true;
     int maxEdgeCount;
 
     #endregion
@@ -48,7 +50,6 @@ public class HexGrid : MonoBehaviour
         {
             var point = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward*0.5f);
 
-            Debug.Log("On point " + point.ToString() + "its cell " + hexGrid.WorldToCell(point));
         }
     }
 
@@ -99,9 +100,9 @@ public class HexGrid : MonoBehaviour
     {
         #region Position and Instantiation
 
-        Layout targetLayout = new Layout(Layout.flat, new Point(hexGrid.cellSize.x, hexGrid.cellSize.y), new Point());
+        Layout targetLayout = new Layout(Layout.flat, new Point(sizeX, sizeY), new Point());
         var pos = targetLayout.HexToPixel(new Hex(x, z, -x - z));
-        var position = new Vector3((float)pos.x, (float)pos.y);
+        var position = new Vector3((float)pos.x, -(float)pos.y);
 
 
         HexCell cell = Instantiate(cellPrefab);
@@ -134,9 +135,9 @@ public class HexGrid : MonoBehaviour
                 {
 
                     target.SetNeighbor((HexDirection)i, neighbour);
-                    Debug.LogWarning("normalNeighbour set");
+                    //Debug.LogWarning("normalNeighbour set");
                 }
-                else 
+                else if(allowWrap)
                 {
                     HexCoordinates opositeNeighbour = new HexCoordinates(99,99);
                     switch ((HexDirection)i)
@@ -144,27 +145,27 @@ public class HexGrid : MonoBehaviour
                         case HexDirection.NE:
                             opositeNeighbour = coords.reflectY();
                             break;
-                        case HexDirection.E:
+                        case HexDirection.SE:
                             opositeNeighbour = coords.reflectZ();
                             break;
-                        case HexDirection.SE:
+                        case HexDirection.S:
                             opositeNeighbour = coords.reflectX();
                             break;
                         case HexDirection.SW:
 
                             opositeNeighbour = coords.reflectY();
                             break;
-                        case HexDirection.W:
+                        case HexDirection.NW:
                             opositeNeighbour = coords.reflectZ();
                             break;
-                        case HexDirection.NW:
+                        case HexDirection.N:
                             opositeNeighbour = coords.reflectX();
                             break;
                     }
                     if(cellDictionary.TryGetValue(opositeNeighbour, out HexCell wrapCell))
                     {
                         target.SetNeighbor((HexDirection)i, wrapCell);
-                        Debug.Log("Oposite neighbour" + opositeNeighbour.ToString() + " set in direction " + ((HexDirection)i).ToString() + " for " + coords);
+                        //Debug.Log("Oposite neighbour" + opositeNeighbour.ToString() + " set in direction " + ((HexDirection)i).ToString() + " for " + coords);
                     }
                     else
                     {

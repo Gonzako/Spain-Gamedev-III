@@ -677,7 +677,7 @@ Grid:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213968543}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CellSize: {x: 0.8659766, y: 1, z: 1}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 1
@@ -1064,7 +1064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1703051973
 Transform:
   m_ObjectHideFlags: 0
@@ -1649,7 +1649,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052068361}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.548842, y: 0.3940215, z: 2.8056037}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1668,9 +1668,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellPrefab: {fileID: 1657739637829857269, guid: d78489af35f832e48bd10df3d09e99b2, type: 3}
-  hexGrid: {fileID: 1213968544}
-  gridSize: 2
+  gridSize: 3
   parent: {fileID: 2052068362}
+  sizeY: 0.5
+  sizeX: 0.5
+  allowWrap: 1
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0
