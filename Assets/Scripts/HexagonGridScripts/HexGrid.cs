@@ -18,6 +18,7 @@ public class HexGrid : MonoBehaviour
 
     #region PublicFields
 
+    public int GridSize { get => gridSize; }
 
 
     #endregion
@@ -68,6 +69,11 @@ public class HexGrid : MonoBehaviour
     #endregion
 
     #region PublicMethods
+
+    public HexCell GetCell(HexCoordinates pos)
+    {
+        return cellDictionary[pos];
+    }
 
     #endregion
 
