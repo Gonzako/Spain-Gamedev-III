@@ -19,7 +19,7 @@ public class HexGrid : MonoBehaviour
     #region PublicFields
 
     public int GridSize { get => gridSize; }
-
+    public int cellCount { get => cellDictionary.Count; }
 
     #endregion
 
@@ -72,7 +72,14 @@ public class HexGrid : MonoBehaviour
 
     public HexCell GetCell(HexCoordinates pos)
     {
-        return cellDictionary[pos];
+        if(cellDictionary.TryGetValue(pos, out HexCell val))
+        {
+            return val;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     #endregion

@@ -65,7 +65,7 @@ public class FusionManager : MonoBehaviour
         if(obj.Item1.Value == obj.Item2.Value)
         {
             obj.Item2.Value *= 2;
-            Destroy(obj.Item1);
+            Destroy(obj.Item1.gameObject, 0.1f);
         }
     }
 

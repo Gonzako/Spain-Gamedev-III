@@ -7,5 +7,5 @@ public class CraftTable : ScriptableObject
 {   
 
     public List<Recipe> recipes = new List<Recipe>();
-
+    
 }

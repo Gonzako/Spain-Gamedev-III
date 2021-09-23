@@ -35,7 +35,7 @@ public class ItemHolderLogic : MonoBehaviour
     private TextMeshPro targetText;
     private int value = 2;
 
-    private const float Speed = 0.2f;
+    private const float Speed = 10f;
     #endregion
 
     #region UnityCallBacks
@@ -43,6 +43,7 @@ public class ItemHolderLogic : MonoBehaviour
     void Awake()
     {
         _targetSprite = GetComponentInChildren<SpriteRenderer>();
+        targetText = GetComponentInChildren<TextMeshPro>();
     }
 
     private void Start()
@@ -50,6 +51,7 @@ public class ItemHolderLogic : MonoBehaviour
         if(transform.parent != null)
         {
             CurrentCell = GetComponentInParent<HexCell>();
+
         }
     }
 
@@ -108,8 +110,8 @@ public class ItemHolderLogic : MonoBehaviour
                 break;
             case moveCases.collidedWithTarget:
                 PlaceInHex(origin);
-                yield return StartCoroutine(MoveAnimation());
                 OnItemCollide?.Invoke((this, target.currentItem.currentHeldItem));
+                yield return StartCoroutine(MoveAnimation());
                 break;
             case moveCases.hitAWall:
                 PlaceInHex(origin);
@@ -120,7 +122,10 @@ public class ItemHolderLogic : MonoBehaviour
 
     public void PlaceInHex(HexCell target)
     {
+        if(CurrentCell != null)
+            _currentCell.currentItem.currentHeldItem = null;
         _currentCell = target;
+
         target.currentItem.currentHeldItem = this;
         transform.SetParent(target.transform, true);
 
@@ -131,7 +136,7 @@ public class ItemHolderLogic : MonoBehaviour
     #region PrivateMethods
     private IEnumerator MoveAnimation()
     {
-        Tween t = transform.DOLocalMove(Vector3.zero, transform.localPosition.magnitude / Speed);
+        Tween t = transform.DOLocalMove(-Vector3.forward, transform.localPosition.magnitude / Speed).SetEase(Ease.InOutCirc);
         yield return new WaitUntil(() => !t.IsActive());
 
     }

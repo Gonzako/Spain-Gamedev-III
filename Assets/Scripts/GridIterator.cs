@@ -23,7 +23,7 @@ public class GridIterator : MonoBehaviour
     #region PrivateFields
 
     HexGrid currentGrid;
-
+    List<ItemHolderLogic> TargetToDispatch;
     #endregion
 
     #region UnityCallBacks
@@ -36,6 +36,8 @@ public class GridIterator : MonoBehaviour
     private void Start()
     {
         currentGrid = GetComponent<HexGrid>();
+        TargetToDispatch = new List<ItemHolderLogic>(currentGrid.cellCount+3);
+
     }
 
     void FixedUpdate()
@@ -59,30 +61,45 @@ public class GridIterator : MonoBehaviour
 
     #region PublicMethods
 
-    public void MoveAllItems(HexDirection dir)
+
+    public IEnumerator MoveAllItems(HexDirection dir)
     {
+        TargetToDispatch.Clear();
         HexCoordinates startingPoint = new HexCoordinates(-dir.ToCoordChange().x * currentGrid.GridSize, -dir.ToCoordChange().z * currentGrid.GridSize);
         var cell = currentGrid.GetCell(startingPoint);
         var checkedSpots = new HashSet<HexCell>();
-        StartCoroutine(SetupMovementRecursive(cell, checkedSpots, dir));
+        SetupMovementRecursive(cell, checkedSpots, dir);
         checkedSpots.Clear();
+        for (int i = 0; i < TargetToDispatch.Count; i++)
+        {
+            StartCoroutine(TargetToDispatch[i].MoveDistance(dir, currentGrid.GridSize*2+1));
+            yield return null;
+            Debug.Log("Asked " + TargetToDispatch[i].gameObject + i + "To move");
+        }
+        TargetToDispatch.Clear();
+    }
+
+    public void MoveAllItems(int dir)
+    {
+        Debug.Log("Move all event called");
+        StartCoroutine(MoveAllItems((HexDirection)dir));
     }
     #endregion
 
 
     #region PrivateMethods
-    private IEnumerator SetupMovementRecursive(HexCell target, HashSet<HexCell> checkedSpots, HexDirection dir)
+    private void SetupMovementRecursive(HexCell target, HashSet<HexCell> checkedSpots, HexDirection dir)
     {
-        StartCoroutine(target.currentItem.currentHeldItem.MoveDistance(dir, currentGrid.GridSize + 1));
+        if (target.currentItem.currentHeldItem != null)
+            TargetToDispatch.Add(target.currentItem.currentHeldItem);
         checkedSpots.Add(target);
 
         for (int i = 0; i < 6; i++)
         {
-            yield return null;
             var newTarget = target.GetNeighbor((HexDirection)i);
             if (!checkedSpots.Contains(newTarget) && newTarget != null)
             {
-                StartCoroutine(SetupMovementRecursive(newTarget, checkedSpots, dir));
+               SetupMovementRecursive(newTarget, checkedSpots, dir);
             }
         }
     }
