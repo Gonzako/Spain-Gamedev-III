@@ -7,6 +7,8 @@ public class HexCell : MonoBehaviour
 
     public HexCoordinates coords;
 
+    public HexHolder currentItem;
+    
 
 
     [SerializeField]
@@ -21,5 +23,10 @@ public class HexCell : MonoBehaviour
     {
         neighbors[(int)direction] = cell;
         cell.neighbors[(int)direction.Opposite()] = this;
+    }
+
+    private void Awake()
+    {
+        currentItem = GetComponent<HexHolder>();
     }
 }

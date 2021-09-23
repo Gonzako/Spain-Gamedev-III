@@ -9,7 +9,7 @@ public class CraftingDictionary : MonoBehaviour
 
 
 
-    void AddCraftsSO(Crafts SO) // SO = ScriptableObject
+    void AddCraftsSO(CraftTable SO) // SO = ScriptableObject
     {
         foreach(Recipe r in SO.recipes)
         {

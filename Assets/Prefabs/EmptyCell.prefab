@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5296425760770287828}
   - component: {fileID: 5296425760770287829}
   - component: {fileID: 1657739637829857269}
+  - component: {fileID: 7557944930318479400}
+  - component: {fileID: -1561575090562964940}
   m_Layer: 0
   m_Name: EmptyCell
   m_TagString: Untagged
@@ -106,3 +108,31 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!58 &7557944930318479400
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296425760770287834}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.34
+--- !u!114 &-1561575090562964940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296425760770287834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a1ff2ec1286694a87ac8a70b776ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

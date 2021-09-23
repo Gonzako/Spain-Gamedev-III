@@ -112,7 +112,6 @@ public class HexGrid : MonoBehaviour
         var hexCoords = new  HexCoordinates(x, z);
         cell.coords = hexCoords;
         cellDictionary.Add(hexCoords, cell);
-
         return hexCoords;
         #endregion
 
