@@ -105,7 +105,7 @@ public class ItemHolderLogic : MonoBehaviour
             case moveCases.collidedWithTarget:
 
                 yield return StartCoroutine(MoveAnimation());
-                OnItemCollide.Invoke((this, target.currentItem.currentHeldItem));
+                OnItemCollide?.Invoke((this, target.currentItem.currentHeldItem));
                 break;
             case moveCases.hitAWall:
                 yield return StartCoroutine(MoveAnimation());
@@ -126,6 +126,8 @@ public class ItemHolderLogic : MonoBehaviour
     #region PrivateMethods
     private IEnumerator MoveAnimation()
     {
+        Tween t = transform.DOLocalMove(Vector3.zero, transform.localPosition.magnitude / Speed);
+        yield return new WaitUntil(() => !t.IsActive());
 
     }
 
