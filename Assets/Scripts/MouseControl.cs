@@ -68,6 +68,31 @@ public class MouseControl : MonoBehaviour
                 direction = 2;
             }
         }
+        else // El eje Y no cambia
+        {
+            if(X_mouse > X_DeadZone)
+            {
+                if(direction == 4 || direction == 5)
+                {
+                    direction = 0;
+                }
+                else if(direction == 3 || direction == 2)
+                {
+                    direction = 1;
+                }
+            }
+            else if(X_mouse < -X_DeadZone)
+            {
+                if(direction == 5 || direction == 0)
+                {
+                    direction = 4;
+                }
+                else if(direction == 2 || direction == 1)
+                {
+                    direction = 3;
+                }
+            }
+        }
 
 
         if(previous_direction != direction)
