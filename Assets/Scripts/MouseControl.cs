@@ -29,6 +29,8 @@ public class MouseControl : MonoBehaviour
     [SerializeField, Range(0,4f)]
     private float Y_DeadZone;
 
+    public bool PressedRecently { get; private set; }
+
     #endregion
 
 
@@ -101,11 +103,18 @@ public class MouseControl : MonoBehaviour
             previous_direction = direction;
         }
 
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && !PressedRecently)
         {
             ClickEvent.Raise(direction);
+            PressedRecently = true;
+            StartCoroutine(refreshPressRoutine());
         }
 
         Debug.Log(X_mouse + " " + Y_mouse);
+    }
+    IEnumerator refreshPressRoutine()
+    {
+        yield return new WaitForSeconds(0.1f);
+        PressedRecently = false;
     }
 }

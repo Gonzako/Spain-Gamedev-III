@@ -23,8 +23,7 @@ public class ItemSpawner : MonoBehaviour
     #region PrivateFields
     [SerializeField] ScriptableObjectArchitecture.GameEvent OnPlayerLose;
     [SerializeField] ItemHolderLogic ItemPrefab;
-    HexGrid currentGrid;
-    private int fillCount = 0;
+    HexGrid currentGrid; private int fillCount = 0;
     #endregion
 
     #region UnityCallBacks
@@ -47,13 +46,13 @@ public class ItemSpawner : MonoBehaviour
 
     void OnEnable()
     {
-        ItemHolderLogic.OnItemCollide += ItemHolderLogic_OnItemCollide;
+        FusionManager.OnFusion += HandleFusion;
     }
 
 
     private void OnDisable()
     {
-        ItemHolderLogic.OnItemCollide -= ItemHolderLogic_OnItemCollide;
+        FusionManager.OnFusion -= HandleFusion;
     }
 
 
@@ -66,6 +65,7 @@ public class ItemSpawner : MonoBehaviour
         if(fillCount == currentGrid.cellCount)
         {
             OnPlayerLose?.Raise();
+            return;
         }
         CreateSpot(FindEmptySpot());
     }
@@ -103,13 +103,10 @@ public class ItemSpawner : MonoBehaviour
         return new HexCoordinates(UnityEngine.Random.Range(-currentGrid.GridSize, currentGrid.GridSize + 1), UnityEngine.Random.Range(-currentGrid.GridSize, currentGrid.GridSize + 1));
     }
 
-
-    private void ItemHolderLogic_OnItemCollide((ItemHolderLogic, ItemHolderLogic) obj)
+    private void HandleFusion(ItemHolderLogic obj)
     {
-        if (obj.Item1.Value == obj.Item2.Value)
-        {
-            fillCount--;
-        }
+        fillCount--;
     }
+
     #endregion
 }

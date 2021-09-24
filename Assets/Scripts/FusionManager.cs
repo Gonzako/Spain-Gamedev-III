@@ -17,7 +17,7 @@ public class FusionManager : MonoBehaviour
 {
 
     #region PublicFields
-
+    public static event Action<ItemHolderLogic> OnFusion;
     #endregion
 
     #region PrivateFields
@@ -66,6 +66,7 @@ public class FusionManager : MonoBehaviour
         {
             obj.Item2.Value *= 2;
             Destroy(obj.Item1.gameObject, 0.1f);
+            OnFusion?.Invoke(obj.Item2);
         }
     }
 
