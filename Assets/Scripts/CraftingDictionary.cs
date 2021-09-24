@@ -5,11 +5,11 @@ using UnityEngine;
 public class CraftingDictionary : MonoBehaviour
 {
 
-    Dictionary<(ItemDescriptor, ItemDescriptor), (ItemDescriptor, ItemDescriptor)> dictionary = new Dictionary<(ItemDescriptor, ItemDescriptor), (ItemDescriptor, ItemDescriptor)>();
+    private Dictionary<(ItemDescriptor, ItemDescriptor), (ItemDescriptor, ItemDescriptor)> dictionary = new Dictionary<(ItemDescriptor, ItemDescriptor), (ItemDescriptor, ItemDescriptor)>();
 
 
 
-    void AddCraftsSO(CraftTable SO) // SO = ScriptableObject
+    public void AddCraftsSO(CraftTable SO) // SO = ScriptableObject
     {
         foreach(Recipe r in SO.recipes)
         {
