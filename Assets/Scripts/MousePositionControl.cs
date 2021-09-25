@@ -19,20 +19,24 @@ public class MousePositionControl : MonoBehaviour
     private Vector2 ScreenCenter;
     private Vector2 MouseDifference;
 
+    [SerializeField]
+    private float linearDifferenceXY;
+
+
     void Awake()
     {
-        ScreenCenter = new Vector2(Screen.width/2, Screen.height/2);
+        CheckScreenSize();
+        InvokeRepeating("CheckScreenSize", 2f, 5f);
     }
 
     void CheckScreenSize()
     {
-
+        ScreenCenter = new Vector2(Screen.width/2, Screen.height/2);
     }
 
     void Update()
     {
         MouseDifference = (Vector2)Input.mousePosition - ScreenCenter;
-        //Debug.Log(MouseDifference);
 
         if(MouseDifference.y > 0)
         {
