@@ -5,15 +5,15 @@ using UnityEngine;
 public class UnitsDictionary : MonoBehaviour
 {
 
-    private Dictionary<int, Color> dictionary = new Dictionary<int, Color>();
+    private Dictionary<int, UnitToVisualValue> dictionary = new Dictionary<int, UnitToVisualValue>();
 
 
 
-    public void AddUnitsDatabase(UnitsDatabase input) // Función para agregar la base de datos de colores de valores al dictionario.
+    public void AddUnitsDatabase(UnitsToVisualDatabase input) // Función para agregar la base de datos de colores de valores al dictionario.
     {
-        foreach(UnitColor u in input.units)
+        foreach(UnitToVisualValue u in input.units)
         {
-            dictionary.Add(u.value, u.Main_Color);
+            dictionary.Add(u.value, u);
         }
     }
 

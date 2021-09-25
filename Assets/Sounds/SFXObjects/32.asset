@@ -10,10 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d1c04620f7fc934fa25d7b1b3df788e, type: 3}
-  m_Name: FootSounds
+  m_Name: 32
   m_EditorClassIdentifier: 
-  Sounds:
-  - {fileID: 11400000, guid: 6ca49b17bd22045418ad3c5baad81c9b, type: 2}
-  - {fileID: 11400000, guid: b37d4c8358d4489478d705475425c50e, type: 2}
-  - {fileID: 11400000, guid: d83b6eba05ca75444aa0df2eab3675be, type: 2}
-  - {fileID: 11400000, guid: 9dcd9612b94c0d24e8490415e864874c, type: 2}
+  Sounds: []
