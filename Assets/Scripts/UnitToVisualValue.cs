@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class UnitColor
+public class UnitToVisualValue
 {
 
     public int value;
     
     [Space]
 
-    public Color Main_Color;
-
+    public Color TextColor;
+    public Color CircleColor;
+    public SoundPacketList PossibleSoundEffects;
 }

@@ -26,6 +26,8 @@ public class ItemHolderLogic : MonoBehaviour
 
     public int Value { get => value; set { this.value = value; targetText.text = value.ToString(); } }
 
+    public Color textColor { get => targetText.color; set => targetText.color = value; }
+    public Color SpriteColor { get => _targetSprite.color; set => _targetSprite.color = value; }
     #endregion
 
     #region PrivateFields
@@ -74,7 +76,7 @@ public class ItemHolderLogic : MonoBehaviour
     private void OnDestroy()
     {
         if(_currentCell != null)
-         _currentCell.currentItem.currentHeldItem = null;
+             _currentCell.currentItem.currentHeldItem = null;
     }
 
     #endregion

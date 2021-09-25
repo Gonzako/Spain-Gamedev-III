@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New UnitsDatabase", menuName = "UnitsDatabase")]
-public class UnitsDatabase : ScriptableObject
+public class UnitsToVisualDatabase : ScriptableObject
 {
 
-    public List<UnitColor> units = new List<UnitColor>();
+    public List<UnitToVisualValue> units = new List<UnitToVisualValue>();
 
 }

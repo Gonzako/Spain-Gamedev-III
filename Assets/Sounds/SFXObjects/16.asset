@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41d64ad823a257142b2b6b733d2237ca, type: 3}
-  m_Name: Foot1 2
+  m_Script: {fileID: 11500000, guid: 2d1c04620f7fc934fa25d7b1b3df788e, type: 3}
+  m_Name: 16
   m_EditorClassIdentifier: 
-  Sound: {fileID: 8300000, guid: d9c6a2feef57acd4cb79520f96d5f095, type: 3}
-  VolumeMax: 1
-  VolumeMin: 0.8
-  PitchMax: 1.2
-  PitchMin: -2.08
+  Sounds: []
