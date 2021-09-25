@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// 
@@ -21,13 +18,15 @@ public class ItemVisualManager : MonoBehaviour
     #endregion
 
     #region PrivateFields
-
+    UnitsDictionary visualData;
     #endregion
 
     #region UnityCallBacks
 
     void Awake()
     {
+
+        visualData = GetComponent<UnitsDictionary>();
 
     }
 
@@ -61,6 +60,16 @@ public class ItemVisualManager : MonoBehaviour
 
     private void FusionManager_OnFusion(ItemHolderLogic obj)
     {
+        if (visualData.Data.TryGetValue(obj.Value, out UnitToVisualValue visuals)) 
+        {
+            obj.SpriteColor = visuals.CircleColor;
+            obj.textColor = visuals.TextColor;
+        }
+        else
+        {
+            obj.SpriteColor = new Color(Random.value, Random.value, Random.value, Random.value);
+            obj.textColor = new Color(Random.value, Random.value, Random.value, Random.value);
+        }
 
     }
 
