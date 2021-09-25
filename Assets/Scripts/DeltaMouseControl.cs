@@ -4,7 +4,7 @@ using UnityEngine;
 using ScriptableObjectArchitecture;
 
 
-public class DeltaMouseControlse : MonoBehaviour
+public class DeltaMouseControl : MonoBehaviour
 {
 
     #region PrivateFields
@@ -24,9 +24,9 @@ public class DeltaMouseControlse : MonoBehaviour
 
     [Space]
     [Header("Mouse Movement Dead Zone")]
-    [SerializeField, Range(0,4f)]
+    [SerializeField, Range(0,1f)]
     private float X_DeadZone;
-    [SerializeField, Range(0,4f)]
+    [SerializeField, Range(0,1f)]
     private float Y_DeadZone;
 
     public bool PressedRecently { get; private set; }

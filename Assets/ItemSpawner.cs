@@ -18,6 +18,7 @@ public class ItemSpawner : MonoBehaviour
 
     #region PublicFields
 
+    public static event Action<ItemHolderLogic> OnItemCreated;
     #endregion
 
     #region PrivateFields
@@ -90,6 +91,7 @@ public class ItemSpawner : MonoBehaviour
         {
             newInstance.Value *= 2;
         }
+        OnItemCreated?.Invoke(newInstance);
     }
 
     private HexCell FindEmptySpot()

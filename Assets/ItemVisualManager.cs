@@ -19,6 +19,7 @@ public class ItemVisualManager : MonoBehaviour
 
     #region PrivateFields
     UnitsDictionary visualData;
+    [SerializeField] AudioSource fusionSoundHolder;
     #endregion
 
     #region UnityCallBacks
@@ -38,6 +39,7 @@ public class ItemVisualManager : MonoBehaviour
     void OnEnable()
     {
         FusionManager.OnFusion += FusionManager_OnFusion;
+        ItemSpawner.OnItemCreated += OnCreation;
     }
 
 
@@ -45,6 +47,7 @@ public class ItemVisualManager : MonoBehaviour
     {
 
         FusionManager.OnFusion -= FusionManager_OnFusion;
+        ItemSpawner.OnItemCreated -= OnCreation;
     }
 
 
@@ -64,13 +67,38 @@ public class ItemVisualManager : MonoBehaviour
         {
             obj.SpriteColor = visuals.CircleColor;
             obj.textColor = visuals.TextColor;
+            if(visuals.PossibleSoundEffects != null)
+            {
+                visuals.PossibleSoundEffects.PlaySound(fusionSoundHolder);
+            }
         }
         else
         {
             obj.SpriteColor = new Color(Random.value, Random.value, Random.value, Random.value);
             obj.textColor = new Color(Random.value, Random.value, Random.value, Random.value);
+
+            if (visuals.PossibleSoundEffects != null)
+            {
+                visuals.PossibleSoundEffects.PlaySound(fusionSoundHolder);
+            }
         }
 
+    }
+
+
+    void OnCreation(ItemHolderLogic obj)
+    {
+        if (visualData.Data.TryGetValue(obj.Value, out UnitToVisualValue visuals))
+        {
+            obj.SpriteColor = visuals.CircleColor;
+            obj.textColor = visuals.TextColor;
+        }
+        else
+        {
+            obj.SpriteColor = new Color(Random.value, Random.value, Random.value, Random.value);
+            obj.textColor = new Color(Random.value, Random.value, Random.value, Random.value);
+
+        }
     }
 
     #endregion
