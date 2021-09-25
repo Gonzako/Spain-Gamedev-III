@@ -62,12 +62,16 @@ public class ItemSpawner : MonoBehaviour
 
     public void AddRandomItem()
     {
-        if(fillCount == currentGrid.cellCount)
+        if(fillCount >= currentGrid.cellCount)
         {
             OnPlayerLose?.Raise();
             return;
         }
-        CreateSpot(FindEmptySpot());
+        else
+        {
+
+            CreateSpot(FindEmptySpot());
+        }
     }
 
     #endregion
@@ -90,8 +94,13 @@ public class ItemSpawner : MonoBehaviour
 
     private HexCell FindEmptySpot()
     {
+        if (fillCount >= currentGrid.cellCount)
+        {
+            Debug.LogError("Tried to infinite loop");
+            return null;
+        }
         HexCell target = currentGrid.GetCell(RandomHexSpot());
-        while(target == null || target.currentItem.currentHeldItem != null  )
+        while(target == null || target.currentItem.currentHeldItem != null)
         {
             target = currentGrid.GetCell(RandomHexSpot());
         }

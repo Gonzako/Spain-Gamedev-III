@@ -24,6 +24,8 @@ public class GridIterator : MonoBehaviour
 
     HexGrid currentGrid;
     List<ItemHolderLogic> TargetToDispatch;
+    int Qeue = 0;
+    Coroutine moveRoutine;
     #endregion
 
     #region UnityCallBacks
@@ -62,27 +64,38 @@ public class GridIterator : MonoBehaviour
     #region PublicMethods
 
 
-    public IEnumerator MoveAllItems(HexDirection dir)
+    public IEnumerator MoveAllItemsRecursively(HexDirection dir)
     {
-        TargetToDispatch.Clear();
-        HexCoordinates startingPoint = new HexCoordinates(-dir.ToCoordChange().x * currentGrid.GridSize, -dir.ToCoordChange().z * currentGrid.GridSize);
-        var cell = currentGrid.GetCell(startingPoint);
-        var checkedSpots = new HashSet<HexCell>();
-        SetupMovementRecursive(cell, checkedSpots, dir);
-        checkedSpots.Clear();
-        for (int i = 0; i < TargetToDispatch.Count; i++)
+        while (Qeue > 0)
         {
-            StartCoroutine(TargetToDispatch[i].MoveDistance(dir, currentGrid.GridSize*2+1));
-            yield return null;
-            Debug.Log("Asked " + TargetToDispatch[i].gameObject + i + "To move");
+            TargetToDispatch.Clear();
+            HexCoordinates startingPoint = new HexCoordinates(dir.ToCoordChange().x * currentGrid.GridSize, dir.ToCoordChange().z * currentGrid.GridSize);
+            var cell = currentGrid.GetCell(startingPoint);
+            var checkedSpots = new HashSet<HexCell>();
+            //SetupMovementRecursive(cell, checkedSpots, dir);
+            SetupMovementIterative(dir);
+            checkedSpots.Clear();
+            for (int i = 0; i < TargetToDispatch.Count; i++)
+            {
+                if (TargetToDispatch[i] == null)
+                    continue;
+                StartCoroutine(TargetToDispatch[i]?.MoveDistance(dir, currentGrid.GridSize * 2 + 1));
+                yield return null;
+                //Debug.Log("Asked " + TargetToDispatch[i]?.gameObject + i + "To move");
+            }
+            TargetToDispatch.Clear();
+            Qeue--;
         }
-        TargetToDispatch.Clear();
+        moveRoutine = null;
+        
     }
 
     public void MoveAllItems(int dir)
     {
         Debug.Log("Move all event called");
-        StartCoroutine(MoveAllItems((HexDirection)dir));
+        Qeue++;
+        if(moveRoutine == null)
+            moveRoutine = StartCoroutine(MoveAllItemsRecursively((HexDirection)dir));
     }
     #endregion
 
@@ -104,5 +117,47 @@ public class GridIterator : MonoBehaviour
         }
     }
 
+    private void SetupMovementIterative(HexDirection dir)
+    {
+
+        HexCoordinates startingPoint = new HexCoordinates(dir.ToCoordChange().x * currentGrid.GridSize, dir.ToCoordChange().z * currentGrid.GridSize);
+        var cell = currentGrid.GetCell(startingPoint);
+
+        for (int i = 0; i < 2*currentGrid.GridSize; i++)
+        {
+            Debug.Log("Went through " + i + "Iterations");
+            cell = cell.GetNeighbor(dir.Opposite());
+            if(cell == null)
+            {
+                Debug.Log("Reached end before hand");
+                break;
+            }
+            if (cell.currentItem.currentHeldItem != null)
+                TargetToDispatch.Add(cell.currentItem.currentHeldItem);
+
+            var axisLeft = dir.Opposite().Next();
+            var axisRight = dir.Opposite().Previous();
+
+            var cellLeft = cell.GetNeighbor(axisLeft);
+            var cellRight = cell.GetNeighbor(axisRight);
+
+            while(cellLeft != null)
+            {
+                if (cellLeft.currentItem.currentHeldItem != null)
+                    TargetToDispatch.Add(cellLeft.currentItem.currentHeldItem);
+                cellLeft = cellLeft.GetNeighbor(axisLeft);
+
+            }
+
+            while (cellRight != null)
+            {
+                if (cellRight.currentItem.currentHeldItem != null)
+                    TargetToDispatch.Add(cellRight.currentItem.currentHeldItem);
+                cellRight = cellRight.GetNeighbor(axisRight);
+
+            }
+            
+        }
+    }
     #endregion
 }

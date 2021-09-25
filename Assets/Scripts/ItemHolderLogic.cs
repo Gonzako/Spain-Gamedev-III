@@ -71,6 +71,11 @@ public class ItemHolderLogic : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        if(_currentCell != null)
+         _currentCell.currentItem.currentHeldItem = null;
+    }
 
     #endregion
 
@@ -126,8 +131,11 @@ public class ItemHolderLogic : MonoBehaviour
             _currentCell.currentItem.currentHeldItem = null;
         _currentCell = target;
 
-        target.currentItem.currentHeldItem = this;
-        transform.SetParent(target.transform, true);
+        if (target != null)
+        {
+            target.currentItem.currentHeldItem = this;
+            transform.SetParent(target.transform, true);
+        }
 
     }
     #endregion
