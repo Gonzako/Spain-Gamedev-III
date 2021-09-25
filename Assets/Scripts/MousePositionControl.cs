@@ -40,7 +40,7 @@ public class MousePositionControl : MonoBehaviour
 
         if(MouseDifference.y > 0)
         {
-            if(Mathf.Abs(MouseDifference.x/2) > MouseDifference.y)
+            if(Mathf.Abs(MouseDifference.x/linearDifferenceXY) > MouseDifference.y)
             {
                 if(MouseDifference.x > 0)
                 {
@@ -58,7 +58,7 @@ public class MousePositionControl : MonoBehaviour
         }
         else if(MouseDifference.y < 0)
         {
-            if(Mathf.Abs(MouseDifference.x/2) > Mathf.Abs(MouseDifference.y))
+            if(Mathf.Abs(MouseDifference.x/linearDifferenceXY) > Mathf.Abs(MouseDifference.y))
             {
                 if(MouseDifference.x > 0)
                 {
