@@ -19,7 +19,7 @@ public class MousePositionControl : MonoBehaviour
     private Vector2 ScreenCenter;
     private Vector2 MouseDifference;
 
-    [SerializeField]
+    [SerializeField, Range(0f,3f)]
     private float linearDifferenceXY;
 
 
@@ -36,12 +36,11 @@ public class MousePositionControl : MonoBehaviour
 
     void Update()
     {   
-        Debug.Log(ScreenCenter);
         MouseDifference = (Vector2)Input.mousePosition - ScreenCenter;
 
         if(MouseDifference.y > 0)
         {
-            if(Mathf.Abs(MouseDifference.x/linearDifferenceXY) > MouseDifference.y)
+            if(Mathf.Abs(MouseDifference.x)/linearDifferenceXY > MouseDifference.y)
             {
                 if(MouseDifference.x > 0)
                 {
@@ -59,7 +58,7 @@ public class MousePositionControl : MonoBehaviour
         }
         else if(MouseDifference.y < 0)
         {
-            if(Mathf.Abs(MouseDifference.x/linearDifferenceXY) > Mathf.Abs(MouseDifference.y))
+            if(Mathf.Abs(MouseDifference.x)/linearDifferenceXY > Mathf.Abs(MouseDifference.y))
             {
                 if(MouseDifference.x > 0)
                 {
@@ -81,7 +80,6 @@ public class MousePositionControl : MonoBehaviour
             MoveEvent.Raise(direction);
             previous_direction = direction;
         }
-
 
         if(Input.GetMouseButtonDown(0))
         {
