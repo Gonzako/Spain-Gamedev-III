@@ -67,6 +67,11 @@ public class ItemVisualManager : MonoBehaviour
         {
             obj.SpriteColor = visuals.CircleColor;
             obj.textColor = visuals.TextColor;
+            if(visuals.targetSprite != null)
+            {
+                obj.Sprite = visuals.targetSprite;
+                
+            }
             if(visuals.PossibleSoundEffects != null)
             {
                 visuals.PossibleSoundEffects.PlaySound(fusionSoundHolder);
@@ -77,6 +82,10 @@ public class ItemVisualManager : MonoBehaviour
             obj.SpriteColor = new Color(Random.value, Random.value, Random.value, Random.value);
             obj.textColor = new Color(Random.value, Random.value, Random.value, Random.value);
 
+            if (visuals.targetSprite != null)
+            {
+                obj.Sprite = visuals.targetSprite;
+            }
             if (visuals.PossibleSoundEffects != null)
             {
                 visuals.PossibleSoundEffects.PlaySound(fusionSoundHolder);
@@ -92,9 +101,18 @@ public class ItemVisualManager : MonoBehaviour
         {
             obj.SpriteColor = visuals.CircleColor;
             obj.textColor = visuals.TextColor;
+            if (visuals.targetSprite != null)
+            {
+                obj.Sprite = visuals.targetSprite;
+            }
         }
         else
         {
+
+            if (visuals.targetSprite != null)
+            {
+                obj.Sprite = visuals.targetSprite;
+            }
             obj.SpriteColor = new Color(Random.value, Random.value, Random.value, Random.value);
             obj.textColor = new Color(Random.value, Random.value, Random.value, Random.value);
 

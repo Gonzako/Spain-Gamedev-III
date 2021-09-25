@@ -7,9 +7,9 @@ public class UnitToVisualValue
 {
 
     public int value;
-    
-    [Space]
 
+    [Space]
+    public Sprite targetSprite;
     public Color TextColor;
     public Color CircleColor;
     public SoundPacketList PossibleSoundEffects;

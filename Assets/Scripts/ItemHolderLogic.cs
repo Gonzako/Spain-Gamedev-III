@@ -28,6 +28,7 @@ public class ItemHolderLogic : MonoBehaviour
 
     public Color textColor { get => targetText.color; set => targetText.color = value; }
     public Color SpriteColor { get => _targetSprite.color; set => _targetSprite.color = value; }
+    public Sprite Sprite { get => _targetSprite.sprite; set => _targetSprite.sprite = value; }
     #endregion
 
     #region PrivateFields
