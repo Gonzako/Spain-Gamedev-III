@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// 
@@ -61,7 +58,8 @@ public class ItemVisualManager : MonoBehaviour
 
     private void FusionManager_OnFusion(ItemHolderLogic obj)
     {
-
+        Vector2 mitadPantalla = new Vector2(Screen.width / 2, Screen.height / 2);
+        Vector2 mouseDifference = (Vector2)Input.mousePosition - mitadPantalla;
     }
 
     #endregion
