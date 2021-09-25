@@ -12,4 +12,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffbfa4360f83c0499cccac21ecfc1ee, type: 3}
   m_Name: ValueToVisuals
   m_EditorClassIdentifier: 
-  units: []
+  units:
+  - value: 2
+    TextColor: {r: 0.4509804, g: 0.42745098, b: 0.39607844, a: 1}
+    CircleColor: {r: 0.93333334, g: 0.89411765, b: 0.85490197, a: 1}
+    PossibleSoundEffects: {fileID: 0}
+  - value: 4
+    TextColor: {r: 0.46666667, g: 0.43529412, b: 0.40784314, a: 1}
+    CircleColor: {r: 0.9254902, g: 0.8784314, b: 0.78431374, a: 1}
+    PossibleSoundEffects: {fileID: 0}
+  - value: 8
+    TextColor: {r: 0.9764706, g: 0.96862745, b: 0.95686275, a: 1}
+    CircleColor: {r: 0.9490196, g: 0.69411767, b: 0.4745098, a: 1}
+    PossibleSoundEffects: {fileID: 0}
+  - value: 16
+    TextColor: {r: 0.9843137, g: 0.9607843, b: 0.9019608, a: 1}
+    CircleColor: {r: 0.9607843, g: 0.58431375, b: 0.3882353, a: 1}
+    PossibleSoundEffects: {fileID: 0}
+  - value: 32
+    TextColor: {r: 0.93333334, g: 0.93333334, b: 0.9254902, a: 1}
+    CircleColor: {r: 0.9607843, g: 0.4862745, b: 0.37254903, a: 1}
+    PossibleSoundEffects: {fileID: 0}
+  - value: 64
+    TextColor: {r: 0.9607843, g: 0.94509804, b: 0.93333334, a: 1}
+    CircleColor: {r: 0.9647059, g: 0.3647059, b: 0.23137255, a: 1}
+    PossibleSoundEffects: {fileID: 0}
+  - value: 128
+    TextColor: {r: 0.9647059, g: 0.9254902, b: 0.9529412, a: 1}
+    CircleColor: {r: 0.91764706, g: 0.8156863, b: 0.4509804, a: 1}
+    PossibleSoundEffects: {fileID: 0}
+  - value: 256
+    TextColor: {r: 0.95686275, g: 0.9647059, b: 0.91764706, a: 1}
+    CircleColor: {r: 0.92941177, g: 0.8, b: 0.38039216, a: 1}
+    PossibleSoundEffects: {fileID: 0}
+  - value: 512
+    TextColor: {r: 1, g: 0.9764706, b: 1, a: 1}
+    CircleColor: {r: 0.9254902, g: 0.78431374, b: 0.3137255, a: 1}
+    PossibleSoundEffects: {fileID: 0}
+  - value: 1024
+    TextColor: {r: 0.972549, g: 0.9647059, b: 0.972549, a: 1}
+    CircleColor: {r: 0.92941177, g: 0.77254903, b: 0.24705882, a: 1}
+    PossibleSoundEffects: {fileID: 0}
+  - value: 2048
+    TextColor: {r: 0.99215686, g: 0.99215686, b: 0.95686275, a: 1}
+    CircleColor: {r: 0.93333334, g: 0.7607843, b: 0.1764706, a: 1}
+    PossibleSoundEffects: {fileID: 0}
