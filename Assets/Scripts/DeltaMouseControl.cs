@@ -4,7 +4,7 @@ using UnityEngine;
 using ScriptableObjectArchitecture;
 
 
-public class DeltaMouseControl : MonoBehaviour
+public class DeltaMouseControlse : MonoBehaviour
 {
 
     #region PrivateFields

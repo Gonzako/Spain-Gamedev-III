@@ -18,13 +18,15 @@ public class ItemVisualManager : MonoBehaviour
     #endregion
 
     #region PrivateFields
-
+    UnitsDictionary visualData;
     #endregion
 
     #region UnityCallBacks
 
     void Awake()
     {
+
+        visualData = GetComponent<UnitsDictionary>();
 
     }
 
@@ -58,8 +60,17 @@ public class ItemVisualManager : MonoBehaviour
 
     private void FusionManager_OnFusion(ItemHolderLogic obj)
     {
-        Vector2 mitadPantalla = new Vector2(Screen.width / 2, Screen.height / 2);
-        Vector2 mouseDifference = (Vector2)Input.mousePosition - mitadPantalla;
+        if (visualData.Data.TryGetValue(obj.Value, out UnitToVisualValue visuals)) 
+        {
+            obj.SpriteColor = visuals.CircleColor;
+            obj.textColor = visuals.TextColor;
+        }
+        else
+        {
+            obj.SpriteColor = new Color(Random.value, Random.value, Random.value, Random.value);
+            obj.textColor = new Color(Random.value, Random.value, Random.value, Random.value);
+        }
+
     }
 
     #endregion

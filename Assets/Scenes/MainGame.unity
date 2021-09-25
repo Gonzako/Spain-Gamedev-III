@@ -1981,6 +1981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1116065331}
   - component: {fileID: 1116065330}
+  - component: {fileID: 1116065332}
   m_Layer: 0
   m_Name: VisualManager
   m_TagString: Untagged
@@ -2014,6 +2015,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1116065332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116065329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c679eff654815f34f8d7d478217b0ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 65aa3a53ec68ddb43a5ef830ffde064b, type: 2}
 --- !u!1 &1119998669
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,8 +3210,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClickEvent: {fileID: 11400000, guid: 27956e266d1162849b853f65b5f80750, type: 2}
   MoveEvent: {fileID: 11400000, guid: bb7f8865188412448960bf14206bbb7f, type: 2}
+  direction: 0
+  previous_direction: 0
+  X_mouse: 0
+  Y_mouse: 0
   X_DeadZone: 0.2
   Y_DeadZone: 0.3
+  <PressedRecently>k__BackingField: 0
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
