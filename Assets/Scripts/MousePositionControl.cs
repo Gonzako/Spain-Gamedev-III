@@ -26,7 +26,7 @@ public class MousePositionControl : MonoBehaviour
     void Awake()
     {
         CheckScreenSize();
-        InvokeRepeating("CheckScreenSize", 2f, 5f);
+        InvokeRepeating("CheckScreenSize", 2f, 4f);
     }
 
     void CheckScreenSize()
@@ -35,7 +35,8 @@ public class MousePositionControl : MonoBehaviour
     }
 
     void Update()
-    {
+    {   
+        Debug.Log(ScreenCenter);
         MouseDifference = (Vector2)Input.mousePosition - ScreenCenter;
 
         if(MouseDifference.y > 0)
@@ -79,6 +80,12 @@ public class MousePositionControl : MonoBehaviour
         {
             MoveEvent.Raise(direction);
             previous_direction = direction;
+        }
+
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            ClickEvent.Raise(direction);
         }
     }
 }
