@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fusion03
   m_EditorClassIdentifier: 
   Sound: {fileID: 8300000, guid: b27a438589e37154e9c6c162b9cda5a0, type: 3}
-  VolumeMax: 0.5
-  VolumeMin: 0.5
+  VolumeMax: 1
+  VolumeMin: 1
   PitchMax: 1
   PitchMin: 1
