@@ -25,8 +25,7 @@ public class SoundPacket : ScriptableObject
     {
         target.volume = Random.Range(VolumeMin, VolumeMax);
         target.volume = Random.Range(PitchMin, PitchMax);
-        target.clip = Sound;
-        target.Play();
+        target.PlayOneShot(Sound);
     }
 
 
