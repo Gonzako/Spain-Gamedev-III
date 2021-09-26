@@ -37,7 +37,6 @@ public class ItemSpawner : MonoBehaviour
     private void Start()
     {
         CreateSpot(FindEmptySpot());
-        CreateSpot(FindEmptySpot());
     }
 
     void FixedUpdate()

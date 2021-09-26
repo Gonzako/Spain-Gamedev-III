@@ -3531,6 +3531,8 @@ GameObject:
   - component: {fileID: 1604464528}
   - component: {fileID: 1604464530}
   - component: {fileID: 1604464531}
+  - component: {fileID: 1604464532}
+  - component: {fileID: 1604464533}
   m_Layer: 0
   m_Name: PlayerInput
   m_TagString: Untagged
@@ -3550,7 +3552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1be5d8095b20ba4fbf0294addcd66f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EventToSend: {fileID: 11400000, guid: 27956e266d1162849b853f65b5f80750, type: 2}
+  EventToSend: {fileID: 11400000, guid: 9e3544e34a4a2c0438244ad8869d8232, type: 2}
   SelectEvent: {fileID: 11400000, guid: bb7f8865188412448960bf14206bbb7f, type: 2}
 --- !u!4 &1604464529
 Transform:
@@ -3594,9 +3596,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75292cb6a4a83d54eb0052d29f65b8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClickEvent: {fileID: 11400000, guid: 27956e266d1162849b853f65b5f80750, type: 2}
+  ClickEvent: {fileID: 11400000, guid: 9e3544e34a4a2c0438244ad8869d8232, type: 2}
   MoveEvent: {fileID: 11400000, guid: bb7f8865188412448960bf14206bbb7f, type: 2}
   linearDifferenceXY: 1.5
+--- !u!114 &1604464532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604464527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391f8afee72e7cb439808d947ee4419a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPlayerCanMove: {fileID: 11400000, guid: 27956e266d1162849b853f65b5f80750, type: 2}
+  OnDirectionGainResource: {fileID: 11400000, guid: a0bf8607036bd554ab56ff1f1bf702a6, type: 2}
+--- !u!114 &1604464533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604464527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094217878ac039741aa004dbc1f81b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 9e3544e34a4a2c0438244ad8869d8232, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1604464532}
+        m_TargetAssemblyTypeName: DirectionResources, Assembly-CSharp
+        m_MethodName: ParseDesireMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _debugValue: 0
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
