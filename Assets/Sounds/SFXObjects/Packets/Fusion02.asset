@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d1c04620f7fc934fa25d7b1b3df788e, type: 3}
-  m_Name: 1024
+  m_Script: {fileID: 11500000, guid: 41d64ad823a257142b2b6b733d2237ca, type: 3}
+  m_Name: Fusion02
   m_EditorClassIdentifier: 
-  Sounds:
-  - {fileID: 11400000, guid: c883b8fa72adf1848b9ce29b8e6cf115, type: 2}
+  Sound: {fileID: 8300000, guid: a83d0d72dd15cdd4596a4738010b9910, type: 3}
+  VolumeMax: 0.5
+  VolumeMin: 0.5
+  PitchMax: 1
+  PitchMin: 1
