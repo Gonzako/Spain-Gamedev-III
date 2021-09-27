@@ -64,7 +64,7 @@ public class FusionManager : MonoBehaviour
     {
         if(obj.Item1.Value == obj.Item2.Value)
         {
-            if(obj.Item1.Value == 2048)
+            if(obj.Item1.Value == 256)
             {
                 obj.Item2.Value = 2;
             }
