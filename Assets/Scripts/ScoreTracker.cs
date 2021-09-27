@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using ScriptableObjectArchitecture;
 
 /// 
 /// Copyright (c) 2021 All Rights Reserved
@@ -18,7 +19,11 @@ public class ScoreTracker : MonoBehaviour
 {
 
     #region PublicFields
-
+    [SerializeField]
+    IntVariable MaxScore;
+    [SerializeField]
+    TextMeshProUGUI MaxScoreTextHolder;
+    
     #endregion
 
     #region PrivateFields
@@ -63,6 +68,11 @@ public class ScoreTracker : MonoBehaviour
     {
         Score += obj.Value;
         text.text = Score.ToString();
+        if(Score > MaxScore.Value)
+        {
+            MaxScore.Value = Score;
+        }
+        MaxScoreTextHolder.text = MaxScore.Value.ToString();
     }
 
     #endregion
