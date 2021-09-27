@@ -19,6 +19,7 @@ public class UIResourceShower : MonoBehaviour
     #region PublicFields
     public int useValue = 3;
     public int DirectionID;
+    public DirectionResources dirs;
     #endregion
 
     #region PrivateFields
@@ -50,14 +51,16 @@ public class UIResourceShower : MonoBehaviour
 
     }
 
-
+    private void Update()
+    {
+        text.text = dirs.DirResources[DirectionID].ToString();
+    }
     #endregion
 
     #region PublicMethods
 
     public void GainResource(int dir)
     {
-        if (dir != DirectionID)
             return;
 
         useValue++;
@@ -66,7 +69,6 @@ public class UIResourceShower : MonoBehaviour
 
     public void LoseResource(int dir)
     {
-        if (dir != DirectionID)
             return;
         useValue--;
         text.text = useValue.ToString();

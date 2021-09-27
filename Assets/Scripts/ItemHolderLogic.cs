@@ -20,6 +20,7 @@ public class ItemHolderLogic : MonoBehaviour
     #region PublicFields
     //1st is caller, 2nd is target
     public static event Action<(ItemHolderLogic, ItemHolderLogic)> OnItemCollide;
+    public static event Action OnItemMove;
     public ItemDescriptor currentItem { get { return _currentItem; } set { _currentItem = value; _targetSprite.sprite = value.sprite; } }
 
     private HexCell CurrentCell { get => _currentCell; set { PlaceInHex(value); } }
@@ -90,6 +91,7 @@ public class ItemHolderLogic : MonoBehaviour
     //We move and collider with something not craftable
     public IEnumerator MoveDistance(HexDirection direction, int strengh)
     {
+        HexCell oldOrigin = _currentCell;
         HexCell target = null;
         HexCell origin = _currentCell;
         moveCases currentCase = moveCases.movedWithoutInterruption;
@@ -108,6 +110,11 @@ public class ItemHolderLogic : MonoBehaviour
                 break;
             }
             origin = target;
+        }
+
+        if(oldOrigin != origin)
+        {
+            OnItemMove?.Invoke();
         }
 
         switch (currentCase)

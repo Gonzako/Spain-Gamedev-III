@@ -24,10 +24,12 @@ public class DirectionResources : MonoBehaviour
 
     #region PrivateFields
     int startValue = 3;
-    List<int> DirResources = new List<int>(6);
+    public List<int> DirResources = new List<int>(6);
 
     [SerializeField] IntGameEvent OnPlayerCanMove;
     [SerializeField] IntGameEvent OnDirectionGainResource;
+
+    private bool somethingHappened = false;
     #endregion
 
     #region UnityCallBacks
@@ -48,13 +50,15 @@ public class DirectionResources : MonoBehaviour
 
     void OnEnable()
     {
-
+        ItemHolderLogic.OnItemMove += ItemHolderLogic_OnItemMove;
+        ItemSpawner.OnItemCreated += ItemSpawner_OnItemCreated;
     }
 
 
     private void OnDisable()
     {
-
+        ItemHolderLogic.OnItemMove -= ItemHolderLogic_OnItemMove;
+        ItemSpawner.OnItemCreated -= ItemSpawner_OnItemCreated;
     }
 
 
@@ -64,21 +68,15 @@ public class DirectionResources : MonoBehaviour
 
     public void ParseDesireMove(int dir)
     {
+        somethingHappened = false;
         Debug.Log(dir.ToString());
-        int currentValue = DirResources[dir];
-        
-        if(currentValue > 0)
-        {
-            OnPlayerCanMove?.Raise(dir);
-            DirResources[dir] = DirResources[dir]-1;
-            AddToRandomDir(dir);
-        }
-        else
-        {
 
-        }
+        StartCoroutine(checkResource(dir));
+
 
     }
+
+    
     #endregion
 
 
@@ -94,6 +92,44 @@ public class DirectionResources : MonoBehaviour
         }
         DirResources[randomExcluded]++;
         OnDirectionGainResource?.Raise(randomExcluded);
+    }
+
+    private IEnumerator checkResource(int dir)
+    {
+
+        int currentValue = DirResources[dir];
+
+        if (currentValue > 0)
+        {
+            OnPlayerCanMove?.Raise(dir);
+            yield return new WaitForSeconds(0.02f);
+
+            if (somethingHappened)
+            {
+
+                DirResources[dir] = DirResources[dir] - 1;
+                AddToRandomDir(dir);
+                somethingHappened = false;
+
+            }
+            else
+            {
+
+            }
+        }
+    }
+
+
+
+    private void ItemSpawner_OnItemCreated(ItemHolderLogic obj)
+    {
+        somethingHappened = true;
+    }
+
+
+    private void ItemHolderLogic_OnItemMove()
+    {
+        somethingHappened = true;
     }
     #endregion
 }

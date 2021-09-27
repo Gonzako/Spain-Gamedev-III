@@ -1787,6 +1787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useValue: 3
   DirectionID: 5
+  dirs: {fileID: 1604464532}
 --- !u!114 &466709509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2154,6 +2155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useValue: 3
   DirectionID: 4
+  dirs: {fileID: 1604464532}
 --- !u!114 &593708581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3559,6 +3561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useValue: 3
   DirectionID: 0
+  dirs: {fileID: 1604464532}
 --- !u!1 &933436684
 GameObject:
   m_ObjectHideFlags: 0
@@ -3830,6 +3833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useValue: 3
   DirectionID: 2
+  dirs: {fileID: 1604464532}
 --- !u!114 &1109146718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5124,6 +5128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useValue: 3
   DirectionID: 1
+  dirs: {fileID: 1604464532}
 --- !u!114 &1546834599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5655,6 +5660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391f8afee72e7cb439808d947ee4419a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DirResources: 
   OnPlayerCanMove: {fileID: 11400000, guid: 27956e266d1162849b853f65b5f80750, type: 2}
   OnDirectionGainResource: {fileID: 11400000, guid: a0bf8607036bd554ab56ff1f1bf702a6, type: 2}
 --- !u!114 &1604464533
@@ -6042,6 +6048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useValue: 3
   DirectionID: 3
+  dirs: {fileID: 1604464532}
 --- !u!114 &1792678795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7263,7 +7270,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0.2
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
