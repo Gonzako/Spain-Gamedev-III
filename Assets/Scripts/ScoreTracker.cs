@@ -36,6 +36,7 @@ public class ScoreTracker : MonoBehaviour
     void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();
+        MaxScoreTextHolder.text = MaxScore.Value.ToString();
     }
 
     void FixedUpdate()
