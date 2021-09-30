@@ -38,40 +38,31 @@ public class MousePositionControl : MonoBehaviour
     {   
         MouseDifference = (Vector2)Input.mousePosition - ScreenCenter;
 
-        if(MouseDifference.y > 0)
+        var angle = Vector2.SignedAngle(Vector2.right, MouseDifference);
+
+
+        if(angle > 0)
         {
-            if(Mathf.Abs(MouseDifference.x)/linearDifferenceXY > MouseDifference.y)
+            direction = 0;
+            if(angle > 60)
             {
-                if(MouseDifference.x > 0)
-                {
-                    direction = 0;
-                }
-                else
+                direction = 5;
+                if(angle > 120)
                 {
                     direction = 4;
                 }
             }
-            else
-            {
-                direction = 5;
-            }
         }
-        else if(MouseDifference.y < 0)
+        else
         {
-            if(Mathf.Abs(MouseDifference.x)/linearDifferenceXY > Mathf.Abs(MouseDifference.y))
+            direction = 1;
+            if (angle < -60)
             {
-                if(MouseDifference.x > 0)
-                {
-                    direction = 1;
-                }
-                else
+                direction = 2;
+                if (angle < -120)
                 {
                     direction = 3;
                 }
-            }
-            else
-            {
-                direction = 2;
             }
         }
 
